@@ -6,7 +6,35 @@ using System.Threading.Tasks;
 
 namespace TextArrayController
 {
-    
+    public enum StringCharacter 
+    {
+        UpperA = 0,
+        UpperB,
+        UpperC,
+        UpperD,
+        UpperE,
+        UpperF,
+        UpperG,
+        UpperH,
+        UpperI,
+        UpperJ,
+        UpperK,
+        UpperL,
+        UpperM,
+        UpperN,
+        UpperO,
+        UpperP,
+        UpperQ,
+        UpperR,
+        UpperS,
+        UpperT,
+        UpperU,
+        UpperV,
+        UpperW,
+        UpperX,
+        UpperY,
+        UpperZ
+    };
 
     public static class CharacterFactory
     {
@@ -195,5 +223,10 @@ namespace TextArrayController
             UpperY,
             UpperZ
         };
+
+        public static string GetCharacterString(StringCharacter character)
+        {
+            return HeightSixCharacters[(int)character];
+        }
     }
 }

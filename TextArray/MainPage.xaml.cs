@@ -23,13 +23,16 @@ namespace TextArray
         {
             this.InitializeComponent();
 
-            var textArrayController = new TextArrayController.TextArrayController(5, 10);
-            textArrayController.SetLight(0, 0, true);
-            textArrayController.SetLight(1, 1, true);
-            textArrayController.SetLight(2, 2, true);
-            textArrayController.SetLight(3, 3, true);
-            textArrayController.SetLight(4, 4, true);
-            textArrayController.SetLight(2, 0, true);
+            var textArrayController = new TextArrayController.TextArrayController(15, 5);
+            //textArrayController.SetLight(0, 0, true);
+            //textArrayController.SetLight(1, 1, true);
+            //textArrayController.SetLight(2, 2, true);
+            //textArrayController.SetLight(3, 3, true);
+            //textArrayController.SetLight(4, 4, true);
+            //textArrayController.SetLight(2, 0, true);
+
+            textArrayController.SetLetter(0, StringCharacter.UpperY);
+            textArrayController.SetLetter(6, StringCharacter.UpperO);
             textArrayController.DebugPrintArray();
         }
     }

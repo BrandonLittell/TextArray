@@ -20,18 +20,25 @@ namespace TextArrayController
         public TextArrayController(uint width, uint height)
         {
             _lineWidth = width;
-            _lineHeight = height;
+            // TODO: Revert hard-coding
+            // Setting here to ensure proper character look
+            _lineHeight = 5;
             _lightCount = _lineWidth * _lineHeight;
             _lightArray = new bool[_lightCount];
         }
 
         private int GetIndexForPosition(int x, int y)
         {
-            var rowJump = y * _lineHeight;
+            return GetIndexForPosition(x, y, (int) _lineHeight, (int)_lineWidth);
+        }
+
+        private int GetIndexForPosition(int x, int y, int arrayWidth, int arrayHeight)
+        {
+            var rowJump = y * arrayHeight;
             var index = (int)rowJump + x;
 
             // Catch overflow
-            if(index >= (_lineWidth * _lineHeight))
+            if (index >= (arrayWidth * arrayHeight))
             {
                 index = -1;
             }
@@ -54,9 +61,48 @@ namespace TextArrayController
             }
         }
 
-        public void SetLetter(int xPos)
+        public void SetLetter(int xPos, StringCharacter letter)
         {
+            var charString = CharacterFactory.GetCharacterString(letter);
+            var charLights = CharStringToArray(charString);
 
+            for (int y = 0; y < 5; y++)
+            {
+                for (int x = 0; x < 5; x++)
+                {
+                    var charIndex = GetIndexForPosition(x, y, 5, 5);
+                    if(charIndex >= 0)
+                    {
+                        var value = charLights[charIndex];
+                        SetLight(x + xPos, y, value);
+                    }
+                }
+            }
+        }
+
+        // TODO: Rewrite this function.
+        // Hyper hardcoded at the moment
+        private bool[] CharStringToArray(string charString)
+        {
+            // 5*5 = 25
+            var charArray = new bool[25];
+            var stringIndex = 0;
+
+            for(int y = 0; y < 5; y++)
+            {
+                for(int x = 0; x < 5; x++)
+                {
+                    var index = GetIndexForPosition(x, y, 5, 5);
+
+                    if(index >= 0)
+                    {
+                        charArray[index] = charString.Substring(stringIndex, 1).Equals("0") ? true : false;
+                        ++stringIndex;
+                    }
+                }
+            }
+
+            return charArray;
         }
 
         public void DebugPrintArray()
