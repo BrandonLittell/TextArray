@@ -16,6 +16,7 @@ namespace TextArrayController
         public string Message { get; set; }
 
         private bool[] _lightArray;
+        public bool[] LightArray => _lightArray;
 
         public TextArrayController(uint width, uint height)
         {

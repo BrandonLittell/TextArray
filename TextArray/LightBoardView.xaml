@@ -9,7 +9,7 @@
     d:DesignHeight="150"
     d:DesignWidth="440">
 
-    <Grid
+    <Grid x:Name="LightGrid"
         Background="Black"
         Width="450"
         Height="150">

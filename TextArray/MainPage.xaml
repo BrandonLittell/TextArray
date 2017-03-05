@@ -9,6 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <local:LightBoardView
-            VerticalAlignment="Top"/>
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"/>
     </Grid>
 </Page>
